@@ -1,8 +1,12 @@
 def call(Closure body) {
-    def context = new org.example.core.PipelineContext(this)
-    body.resolveStrategy = Closure.DELEGATE_FIRST
-    body.delegate = context
-    body()
+    node {
+        def script = this
 
-    new org.example.core.PipelineRunnew(context).run()
+        def context = new org.example.core.PipelineContext(script)
+        body.resolveStrategy = Closure.DELEGATE_FIRST
+        body.delegate = context
+        body()
+
+        new org.example.core.PipelineRunner(context).run()
+    }
 }

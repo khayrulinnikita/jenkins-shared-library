@@ -20,6 +20,11 @@ class JavaBuilder implements Builder {
     }
 
     @Override
+    void buildDocker() {
+        println("Build Docker image")
+    }
+
+    @Override
     void deploy() {
         println("Deploy Java application")
     }

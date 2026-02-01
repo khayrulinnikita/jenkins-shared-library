@@ -11,11 +11,9 @@ class PipelineRunner {
     }
 
     void run() {
-        context.script.node {
-            selectBuilder().with { builder ->
-                context.stages.each { stage ->
-                    stage.execute(context, builder)
-                }
+        selectBuilder().with { builder ->
+            context.stages.each { stage ->
+                stage.execute(context, builder)
             }
         }
     }

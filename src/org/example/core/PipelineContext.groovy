@@ -1,8 +1,6 @@
 package org.example.core
 
-import org.example.stages.BuildStage
-import org.example.stages.Stage
-import org.example.exceptions.Extension
+import org.example.stages.*
 
 class PipelineContext {
     def script
@@ -10,7 +8,6 @@ class PipelineContext {
     String buildTool
 
     List<Stage> stages = []
-    List<Extension> extensions = []
 
     PipelineContext(script) {
         this.script = script
@@ -35,6 +32,10 @@ class PipelineContext {
     }
 
     void test() {
-        stages << new BuildStage()
+        stages << new TestStage()
+    }
+
+    void dockerBuild() {
+        stages << new DockerImageStage()
     }
 }
